@@ -20,10 +20,10 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
 .share-status{white-space:nowrap;color:var(--green);font-size:12px;padding:6px 10px;border-radius:20px;background:var(--pale)}
-.share-note{margin:20px 0 0;font-size:13px;color:var(--muted);line-height:1.8}
 .card-actions .file-status{font-size:12px;color:#87938b;margin-left:auto}
 .card-actions .open-original{cursor:pointer}
 .share-footer{align-items:flex-start;line-height:1.8}
+.page-jump{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}.page-jump input{width:64px;padding:9px 6px;border:1px solid var(--line);border-radius:10px;background:#fff;color:inherit;font:inherit;text-align:center;appearance:textfield}.page-jump input::-webkit-inner-spin-button,.page-jump input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.page-jump input:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 .question-title{overflow-wrap:anywhere}
 .clear-search{white-space:nowrap}
 .detail-section .reading-pages{color:var(--green)}
@@ -34,11 +34,10 @@
 <header class="site-header page-width"><div><p class="brand-note">具身智能 · 行业研究</p><h1>机器人与具身智能资料库</h1></div><span class="share-status">阅读分享版</span></header>
 <div class="site-nav-wrap"><nav class="site-nav page-width" aria-label="主导航"><button id="questionsNav" data-view="questions" type="button">研究问题</button><button id="introNav" data-view="intro" type="button">入门阅读</button><button id="libraryNav" data-view="library" type="button">材料库</button><button id="acquireNav" data-view="acquire" type="button">待获取</button></nav></div>
 <main class="page-width">
-<p id="publicationNote" class="share-note"></p>
 <section id="questionsView" class="view" data-page="questions" hidden><div class="view-heading"><div><h2>研究问题</h2><p>带着问题阅读，再逐步形成有依据的判断。</p></div><span class="heading-count">六个问题 · 持续积累</span></div><div id="questionCards" class="question-grid"></div><p class="quiet-note">围绕需求、技术与应用、产业结构及发展路径，理解具身智能行业的演进。<br>每个判断都应保留<b>依据、相反意见、成立条件和更新信号</b>。</p></section>
 <section id="introView" class="view" data-page="intro" hidden><div class="view-heading"><div><h2>入门阅读</h2><p>从概念到场景，按顺序建立行业认识。从已开放的原件开始阅读。</p></div><span id="introCount" class="heading-count"></span></div><div id="introCards" class="cards"></div></section>
-<section id="libraryView" class="view" data-page="library" hidden><div class="view-heading"><div><h2>材料库</h2><p>按题名、机构与标签查找材料，查看目录和阅读说明。</p></div><span id="libraryTotal" class="heading-count"></span></div><div class="library-top"><div class="pool-switch" aria-label="材料范围"><button type="button" id="allMaterials" data-pool="all">全部</button><button type="button" id="coreNav" data-pool="core">核心</button></div><div class="search-tools"><label class="search-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="q" type="search" aria-label="搜索材料" placeholder="搜索题名、机构或关键词"></label><button type="button" id="openFilters" class="filter-button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 6h18M6 12h12M9 18h6"/></svg><span id="filterButtonLabel">筛选</span></button></div></div><div class="list-info"><span id="count" role="status" aria-live="polite"></span><div class="active-filters" id="activeFilters" hidden><span id="filterSummary"></span><button type="button" id="resetFilters" class="quiet">清空筛选</button></div></div><div id="rows" class="cards"></div><div class="pagination"><button type="button" id="prev">上一页</button><span id="pageno"></span><button type="button" id="next">下一页</button></div></section>
-<section id="acquireView" class="view" data-page="acquire" hidden><div class="view-heading"><div><h2>待获取</h2><p>所有正文不完整的材料，分别保留当前获取决定。</p></div><span id="acquireCount" class="heading-count"></span></div><div id="acquireCards" class="cards"></div><div class="pagination"><button type="button" id="acquirePrev">上一页</button><span id="acquirePageNo"></span><button type="button" id="acquireNext">下一页</button></div></section>
+<section id="libraryView" class="view" data-page="library" hidden><div class="view-heading"><div><h2>材料库</h2><p>按题名、机构与标签查找材料，查看目录和阅读说明。</p></div><span id="libraryTotal" class="heading-count"></span></div><div class="library-top"><div class="pool-switch" aria-label="材料范围"><button type="button" id="allMaterials" data-pool="all">全部</button><button type="button" id="coreNav" data-pool="core">核心</button></div><div class="search-tools"><label class="search-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="q" type="search" aria-label="搜索材料" placeholder="搜索题名、机构或关键词"></label><button type="button" id="openFilters" class="filter-button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 6h18M6 12h12M9 18h6"/></svg><span id="filterButtonLabel">筛选</span></button></div></div><div class="list-info"><span id="count" role="status" aria-live="polite"></span><div class="active-filters" id="activeFilters" hidden><span id="filterSummary"></span><button type="button" id="resetFilters" class="quiet">清空筛选</button></div></div><div id="rows" class="cards"></div><div class="pagination"><button type="button" id="prev">上一页</button><label class="page-jump"><input id="pageno" type="number" inputmode="numeric" min="1" step="1" aria-label="材料库页码" title="输入页码，按回车跳转"><span>/ <span id="pageTotal"></span></span></label><button type="button" id="next">下一页</button></div></section>
+<section id="acquireView" class="view" data-page="acquire" hidden><div class="view-heading"><div><h2>待获取</h2><p>所有正文不完整的材料，分别保留当前获取决定。</p></div><span id="acquireCount" class="heading-count"></span></div><div id="acquireCards" class="cards"></div><div class="pagination"><button type="button" id="acquirePrev">上一页</button><label class="page-jump"><input id="acquirePageNo" type="number" inputmode="numeric" min="1" step="1" aria-label="待获取页码" title="输入页码，按回车跳转"><span>/ <span id="acquirePageTotal"></span></span></label><button type="button" id="acquireNext">下一页</button></div></section>
 </main>
 <footer class="site-footer page-width share-footer"><span id="footerCounts"></span></footer>
 <dialog id="filterDialog" class="dialog filter-dialog" aria-labelledby="filterHeading"><div class="dialog-header"><div><h2 id="filterHeading">筛选材料</h2><p class="dialog-subtitle">按内容、形式、来源、年份与专题标签查找。</p></div><button type="button" class="close-icon" data-close="filterDialog" aria-label="关闭筛选">×</button></div><form id="filterForm"><div class="dialog-content"><div id="filterFields" class="form-grid"></div></div><div class="dialog-actions"><button type="button" id="clearFilterDraft" class="quiet left-action">重置</button><button type="button" data-close="filterDialog">取消</button><button type="submit" class="primary">查看材料</button></div></form></dialog>
@@ -126,7 +125,6 @@
     $('allMaterials').setAttribute('aria-pressed',state.pool==='all'); $('coreNav').setAttribute('aria-pressed',state.pool==='core');
     $('libraryTotal').textContent=doc.counts.records.toLocaleString()+' 条登记 · '+doc.counts.core+' 条核心';
     $('introCount').textContent=doc.intro.length+' 份阅读安排';
-    $('publicationNote').textContent=doc.publication_complete?'库内现有原件已全部上线，可直接打开阅读或下载。摘要、节选与完整正文按实际持有范围标注。':'原件正在分批上线，目前 '+doc.counts.readable+' 条材料可在线阅读。其余仍可浏览目录；摘要、节选与完整正文按实际持有范围标注。';
     $('footerCounts').textContent='共 '+doc.counts.records.toLocaleString()+' 条 · 目录更新 '+doc.snapshot;
     if (state.view==='intro') $('introCards').innerHTML=doc.intro.map(r=>card(byId.get(r.id),r)).join('');
     if (state.view==='library') {
@@ -135,7 +133,8 @@
       state.page=Math.max(1,Math.min(Number(state.page)||1,max));
       $('count').textContent=rows.length.toLocaleString()+' 条材料'+(state.q?' · 搜索结果':'');
       $('rows').innerHTML=rows.slice((state.page-1)*size,state.page*size).map(x=>card(x)).join('')||'<div class="empty">没有符合条件的材料。试试清空筛选或换个关键词。</div>';
-      $('pageno').textContent=state.page+' / '+max; $('prev').disabled=state.page===1; $('next').disabled=state.page===max;
+      $('pageno').value=state.page; $('pageno').max=max; $('pageTotal').textContent=max;
+      $('prev').disabled=state.page===1; $('next').disabled=state.page===max;
       const active=Object.values(state.filters).filter(Boolean).length;
       $('activeFilters').hidden=!active; $('filterSummary').textContent='已选 '+active+' 项';
       $('filterButtonLabel').textContent=active?'筛选 ('+active+')':'筛选';
@@ -145,7 +144,7 @@
       state.acquirePage=Math.max(1,Math.min(Number(state.acquirePage)||1,max));
       $('acquireCount').textContent=doc.targets.length+' 条不完整材料 · 暂缓获取 '+doc.targets.filter(t=>t.status==='暂缓获取').length+' · 不再追索 '+doc.targets.filter(t=>t.status==='不再追索').length;
       $('acquireCards').innerHTML=doc.targets.slice((state.acquirePage-1)*size,state.acquirePage*size).map(t=>card(byId.get(t.id),null,t)).join('')||'<p class="empty">暂无不完整材料。</p>';
-      $('acquirePageNo').textContent=state.acquirePage+' / '+max;
+      $('acquirePageNo').value=state.acquirePage; $('acquirePageNo').max=max; $('acquirePageTotal').textContent=max;
       $('acquirePrev').disabled=state.acquirePage===1;$('acquireNext').disabled=state.acquirePage===max;
     }
     persist();
@@ -195,6 +194,16 @@
   $('next').addEventListener('click',()=>{state.page++;render();$('libraryView').scrollIntoView({block:'start'});});
   $('acquirePrev').addEventListener('click',()=>{state.acquirePage--;render();$('acquireView').scrollIntoView({block:'start'});});
   $('acquireNext').addEventListener('click',()=>{state.acquirePage++;render();$('acquireView').scrollIntoView({block:'start'});});
+  for (const [id,key,view] of [['pageno','page','libraryView'],['acquirePageNo','acquirePage','acquireView']]) {
+    const input=$(id);
+    const jump=()=>{
+      const number=Number(input.value);
+      if (input.value.trim()&&Number.isFinite(number)) state[key]=Math.trunc(number);
+      render();$(view).scrollIntoView({block:'start'});
+    };
+    input.addEventListener('change',jump);
+    input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();jump();}});
+  }
   $('openFilters').addEventListener('click',openFilters);
   $('resetFilters').addEventListener('click',()=>{state.filters={};state.page=1;render();});
   $('clearFilterDraft').addEventListener('click',()=>{for (const el of $('filterFields').querySelectorAll('select')) el.value='';});
