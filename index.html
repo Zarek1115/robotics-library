@@ -54,9 +54,8 @@
   const size = 12, storageKey = 'industry.directory.share.v1';
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch (_) {}
-  const state = {view:'questions',pool:'all',q:'',page:1,acquirePage:1,filters:{},...saved};
+  const state = {pool:'all',q:'',page:1,acquirePage:1,filters:{},...saved,view:'questions'};
   const views = ['questions','intro','library','acquire'];
-  if (!views.includes(state.view)) state.view = 'questions';
   if (!['all','core'].includes(state.pool)) state.pool = 'all';
   if (typeof state.q !== 'string') state.q = '';
   if (!state.filters || typeof state.filters !== 'object') state.filters = {};
@@ -76,7 +75,7 @@
   function persist() { try { localStorage.setItem(storageKey,JSON.stringify(state)); } catch (_) {} }
   function readHash() {
     const p = new URLSearchParams(location.hash.slice(1));
-    if (views.includes(p.get('view'))) state.view = p.get('view');
+    state.view = views.includes(p.get('view')) ? p.get('view') : 'questions';
     if (['all','core'].includes(p.get('pool'))) state.pool = p.get('pool');
     if (p.has('q')) { if (state.q!==p.get('q')) state.page = 1; state.q = p.get('q'); }
   }
